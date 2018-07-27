@@ -1,112 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>br.nom.penha.bruno.arquiteto</groupId>
-    <artifactId>lojavirtual-javaee6</artifactId>
-    <version>2.0</version>
-    <packaging>pom</packaging>
-    <name>lojavirtual-javaee6</name>
-    
-    <modules>
-        <module>lojavirtual-javaee6-model</module>
-        <module>lojavirtual-javaee6-registry</module>
-        <module>lojavirtual-javaee6-web</module>
-    </modules>
-    
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-         <!-- configuração de versão do RichFaces -->  
-        <org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
-    </properties>
-       
-    <repositories>
-        <repository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Maven Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-        </repository>
-    </repositories>
-   
-    
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-    
-    <dependencyManagement>
-        <dependencies>
-           
-            <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-web-api</artifactId>
-                <version>6.0</version>
-                <scope>provided</scope>
-            </dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.nom.penha.bruno.arquiteto</groupId>
+	<artifactId>lojavirtual-javaee6</artifactId>
+	<version>2.0</version>
+	<packaging>pom</packaging>
+	<name>lojavirtual-javaee6</name>
 
-            <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-api</artifactId>
-                <version>6.0</version>
-                <scope>provided</scope>
-            </dependency>
+	<modules>
+		<module>lojavirtual-javaee6-model</module>
+		<module>lojavirtual-javaee6-registry</module>
+		<module>lojavirtual-javaee6-web</module>
+	</modules>
 
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-entitymanager</artifactId>
-                <version>4.3.5.Final</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>slf4j-api</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-        
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>1.5.8</version>
-            </dependency>
-        
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-ehcache</artifactId>
-                <version>4.3.5.Final</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>1.2.13</version>
-            </dependency>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- configuração de versão do RichFaces -->
+		<org.richfaces.bom.version>4.3.4.Final</org.richfaces.bom.version>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<prop.glassfishDirectory.path>/opt/glassfish4</prop.glassfishDirectory.path>
+		<prop.glassfish.user>admin</prop.glassfish.user>
+		<prop.glassfish.pass>admin</prop.glassfish.pass>
+		<cargo.runtime.args>force=true</cargo.runtime.args>
+		<cargo.hostname>localhost</cargo.hostname>
+		<cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
+		<cargo.remote.username>${prop.glassfish.user}</cargo.remote.username>
+		<cargo.remote.password>${prop.glassfish.pass}</cargo.remote.password>
+	</properties>
 
-        </dependencies>
-    </dependencyManagement>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <ejbVersion>3.1</ejbVersion>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+	</repositories>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-web-api</artifactId>
+				<version>6.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>6.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>4.3.5.Final</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>slf4j-api</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.5.8</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-ehcache</artifactId>
+				<version>4.3.5.Final</version>
+			</dependency>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.13</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.1</ejbVersion>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${endorsed.dir}</outputDirectory>
+							<silent>true</silent>
+							<artifactItems>
+								<artifactItem>
+									<groupId>javax</groupId>
+									<artifactId>javaee-endorsed-api</artifactId>
+									<version>6.0</version>
+									<type>jar</type>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin>
+				<groupId>org.glassfish.maven.plugin</groupId>
+				<artifactId>maven-glassfish-plugin</artifactId>
+				<configuration>
+					<terse>false</terse>
+					<echo>true</echo>
+					<debug>true</debug>
+					<glassfishDirectory>${prop.glassfishDirectory.path}</glassfishDirectory>
+					<user>${prop.glassfish.user}</user>
+					<adminPassword>${prop.glassfish.pass}</adminPassword>
+					<domain>
+						<name>domain1</name>
+						<host>localhost</host>
+						<adminPort>4848</adminPort>
+					</domain>
+					<components>
+						<component>
+							<name>${project.artifactId}</name>
+							<artifact>${project.build.directory}/${project.build.finalName}.war</artifact>
+						</component>
+					</components>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>redeploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<version>1.4.2</version>
+					<configuration>
+						<container>
+							<containerId>glassfish3x</containerId>
+							<type>remote</type>
+						</container>
+						<configuration>
+							<type>runtime</type>
+							<properties>
+								<cargo.remote.username>${cargo.remote.username}</cargo.remote.username>
+								<cargo.remote.password>${cargo.remote.password}</cargo.remote.password>
+								<cargo.glassfish.admin.port>${cargo.glassfish.admin.port}</cargo.glassfish.admin.port>
+								<cargo.hostname>${cargo.hostname}</cargo.hostname>
+							</properties>
+						</configuration>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.glassfish.deployment</groupId>
+							<artifactId>deployment-client</artifactId>
+							<version>3.1.1</version>
+
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
 </project>

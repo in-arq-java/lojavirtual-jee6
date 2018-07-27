@@ -9,15 +9,15 @@
 
             <rich:dropDownMenu label="Categorias">
                 <rich:menuItem action="/categoria/List" label="Listar Categorias" />
-                <rich:menuItem action="#{categoriaController.setup}" label="Nova Categoria" />
+                <rich:menuItem action="#{categoriaController.setup()}" label="Nova Categoria" />
             </rich:dropDownMenu>
             <rich:dropDownMenu label="Clientes">
                 <rich:menuItem action="/cliente/List" label="Listar Clientes" />
-                <rich:menuItem action="#{clienteController.setup}" label="Novo Cliente" />
+                <rich:menuItem action="#{clienteController.setup()}" label="Novo Cliente" />
             </rich:dropDownMenu>
             <rich:dropDownMenu label="Produtos">
                 <rich:menuItem action="/produto/List" label="Listar Produtos" />
-                <rich:menuItem action="#{produtoController.setup}" label="Novo Produto" />
+                <rich:menuItem action="#{produtoController.setup()}" label="Novo Produto" />
             </rich:dropDownMenu>
 
             <c:forEach items="#{menuController.menus}" var="menu">

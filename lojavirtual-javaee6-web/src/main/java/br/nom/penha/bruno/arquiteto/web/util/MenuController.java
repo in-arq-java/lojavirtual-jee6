@@ -5,6 +5,7 @@
 package br.nom.penha.bruno.arquiteto.web.util;
 
 import java.util.Set;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
